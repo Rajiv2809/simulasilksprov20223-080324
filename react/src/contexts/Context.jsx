@@ -12,11 +12,11 @@ const StateContext = createContext({
     stoks: [],
     penjualan : [],
     tenants: [],
-    Pendapatans: [],
+    pendapatans: [],
     setStoks : () => [],
-    setPenjualan : () => [],
+    setPenjualans : () => [],
     setPendapatans : () => [],
-    setTenant : () => [],
+    setTenants : () => [],
     setCurrentUser : () => {},
     setUserToken : () => {},
     showToast: () => {},
@@ -31,7 +31,7 @@ export const StateProvider = ({children}) => {
     const [stoks ,setStoks] = useState([]);
     const [penjualans, setPenjualans] = useState([]);
     const [tenants, setTenants] = useState([]);
-    const [pendpatans, setPendapatans] = useState([]);
+    const [pendapatans, setPendapatans] = useState([]);
 
 
     const setToken = (token) => {
@@ -63,7 +63,7 @@ export const StateProvider = ({children}) => {
         stoks,
         penjualans,
         tenants,
-        pendpatans,
+        pendapatans,
         setStoks,
         setPenjualans,
         setPendapatans,

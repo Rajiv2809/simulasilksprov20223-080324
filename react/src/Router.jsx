@@ -9,7 +9,10 @@ import AddStok from "./View/AddStok";
 import Penjualan from "./components/Penjualan";
 import AddPenjualan from "./View/AddPenjualan";
 import DetailStok from "./View/DetailStok";
-
+import AddTenant from "./View/AddTenant";
+import Tenant from "./components/Tenant";
+import AddPendapatan from "./View/AddPendapatan";
+import Pendapatan from "./components/Pendapatan";
 const router = createBrowserRouter([
     {
         path:'/',
@@ -48,19 +51,44 @@ const router = createBrowserRouter([
                     {
                         path: 'stok/detail/:id',
                         element: <DetailStok/>
-                    }
-                    // {
-                    //     path: 'Pejualan',
-                    //     element: <Penjualan/>
-                    // },
-                    // {
-                    //     path: '/Pejualan/add',
-                    //     element: <AddPenjualan/>
-                    // },
-                    // {
-                    //     path: '/Pejualan/edit',
-                    //     element: <AddPenjualan/>
-                    // }
+                    },
+                    {
+                        path: 'penjualan',
+                        element: <Penjualan/>
+                    },
+                    {
+                        path: 'penjualan/add',
+                        element: <AddPenjualan/>
+                    },
+                    {
+                        path: 'penjualan/edit/:id',
+                        element: <AddPenjualan/>
+                    },
+                    {
+                        path: 'tenant',
+                        element: <Tenant/>
+                    },
+                    {
+                        path: 'tenant/add',
+                        element: <AddTenant/>
+                    },
+                    {
+                        path: 'tenant/edit/:id',
+                        element: <AddTenant/>
+                    },
+                    {
+                        path: 'pendapatan',
+                        element: <Pendapatan/>
+                    },
+                    {
+                        path: 'pendapatan/add',
+                        element: <AddPendapatan/>
+                    },
+                    {
+                        path: 'pendapatan/edit/:id',
+                        element: <AddPendapatan/>
+                    },
+                    
                     
                 ]
             }

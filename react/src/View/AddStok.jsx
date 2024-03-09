@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useStateContext } from '../contexts/Context'
 import { useState } from 'react';
 import axiosClient from '../axios';
@@ -13,7 +13,7 @@ export default function AddStok() {
   const [stok, setStok ] = useState();
   const [kategori, setKategori] = useState();
   const {id} = useParams();
-
+  const navigate = useNavigate();
   useEffect(() => {
     if(id){
       axiosClient.get(`/v1/stok/${id}`).then(({data}) => {
@@ -38,7 +38,7 @@ export default function AddStok() {
         kategori
       }).then(({data}) => {
         showToast(data.message)
-
+        navigate('/dashboard/stok')
       }).catch((err) => {
         showToast(err.response.data.message, 'red')
       })
@@ -53,7 +53,7 @@ export default function AddStok() {
         kategori
       }).then(({data}) => {
         showToast(data.message)
-
+        navigate('/dashboard/stok')
       }).catch((err) => {
         showToast(err.response.data.message, 'red')
       })

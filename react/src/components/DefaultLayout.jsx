@@ -39,7 +39,7 @@ export default function DefaultLayout() {
                 <Link to='/dashboard'>Kelola</Link>
             </div>
             <div className="right">
-                <button onClick={logout}>Logout</button>
+                <button className='text-rose-800' onClick={logout}>Logout</button>
             </div>
         </nav>
         <div className="div">

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axiosClient from '../axios'
 import { useStateContext } from '../contexts/Context'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 export default function Stok() {
     const { stoks, currentUser , setStoks, showToast} = useStateContext();
     const [loading, setLoading] = useState(false);
+   
     useEffect(() => {
         axiosClient.get('/v1/stok').then(({data}) => {
             setStoks(data);
