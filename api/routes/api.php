@@ -30,6 +30,9 @@ Route::middleware([AuthenticateToken::class])->prefix('/v1')->group(function () 
     
     Route::get('/me', [AuthController::class, 'me']);
 
+    Route::get('/kwitansi/{id}', [PendapatanTenantController::class, 'kwitansi']);
+    Route::get('/struk/{id}', [PenjualanController::class, 'struk']);
+
     Route::post('/stok', [StokController::class, 'addData']);
     Route::get('/stok', [StokController::class, 'alldata']);
     Route::get('/stok/{id}', [StokController::class, 'getData']);

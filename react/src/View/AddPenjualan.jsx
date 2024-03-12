@@ -50,9 +50,11 @@ export default function AddPenjualan() {
         dibayar
       }).then(({data}) => {
         showToast(data.message)
+        
+        axiosClient.get(`/v1/struk/${id}`);
       }).catch((err) => {
-        showToast(err.response.data.message,'red')
-        navigate('/dashboard/penjualan')
+        showToast(err.response.data.message,'red');
+        navigate('/dashboard/penjualan');
       })
     }else {
       e.preventDefault()
@@ -62,13 +64,33 @@ export default function AddPenjualan() {
         qty,
         tanggal,
         dibayar
-      }).then(({data}) => {
+      }).then(({data}) =>{
         showToast(data.message)
-        navigate('/dashboard/penjualan')
-      }).catch((err) => {
-        console.log(err)
-      })
-    }
+        axiosClient.get(`/v1/struk/${data.id}`, { responseType: "blob" })
+        .then((response) => {
+          
+          const blob = new Blob([response.data], { type: "application/pdf" });
+      
+          
+          const link = document.createElement("a");
+          link.href = window.URL.createObjectURL(blob);
+          link.download = "struk.pdf";
+      
+          
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        })
+        .catch((error) => {
+          console.error("Error fetching PDF:", error);
+        });
+
+      })  
+      navigate('/dashboard/penjualan');
+        
+        
+      }
+    
   }
 
 

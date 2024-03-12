@@ -14,7 +14,9 @@ class TenantController extends Controller
     public function addData(TenantRequest $request){
         $data = $request->all();
         Tenant::create($data);
-        return $this->createSuccess();
+        return $this->createSuccess([
+            'message' => 'create success',
+        ]);
     }
     public function allData(){
         $data = Tenant::all();

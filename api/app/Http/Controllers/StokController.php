@@ -14,7 +14,9 @@ class StokController extends Controller
     public function addData(StokRequest $request){
         $data = $request->all();
         Stok::create($data);
-        return $this->createSuccess();
+        return $this->createSuccess([
+            'message' => 'create success',
+        ]);
     }
     public function allData(){
         $data = Stok::all();

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Traits\ResponseHttpStatus;
 use App\Http\Requests\PenjualanRequest;
 use App\Http\Requests\UpdatePenjualanRequest;
-
+use PDF;
 class PenjualanController extends Controller
 {
     use ResponseHttpStatus;
@@ -15,8 +15,11 @@ class PenjualanController extends Controller
         $data = $request->all();
         $data['total'] = $request->qty  * $request->hargajual;
         $data['kembali'] = $request->dibayar - $request['total'];
-        Penjualan::create($data);
-        return $this->createSuccess();
+        $penjualan = Penjualan::create($data);
+        return $this->createSuccess([
+            'message' => 'create success',
+            "id" => $penjualan->IDTrans
+        ]);
     }
     public function allData(){
         $data = Penjualan::all();
@@ -47,4 +50,10 @@ class PenjualanController extends Controller
         $data->delete();
         return $this->deleteSuccess();
     }
-}
+    public function struk($id) {
+        $penjualan = Penjualan::find($id);
+        
+        $pdf = PDF::loadview('Struk',['penjualan'=>$penjualan]);
+        return $pdf->download('struk.pdf');
+    }
+}   

@@ -6,10 +6,8 @@ trait ResponseHttpStatus {
     protected function success($message, $status = 200){
         return response()->json($message, $status);
     }
-    protected function createSuccess($message = 'create success', $status = 200){
-        return response()->json([
-            'message' => $message
-        ], $status);
+    protected function createSuccess($message , $status = 200){
+        return response()->json($message, $status);
     }
     protected function updateSuccess($message = 'update success', $status = 200){
         return response()->json([

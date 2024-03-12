@@ -33,41 +33,57 @@
 <body>
     <div class="judul">
 
-        <h1>kwitansi  </h1>
+        <h1> Struk   </h1>
     </div>
 
     <table>
         <tbody>
             <tr>
                 <th>
-                    ID pendapatan :
+                    IDTrans :
                 </th>
                 <th>
-                    {{ $pendapatan->IDpendapatan }}
-                </th>
-            </tr>
-            <tr>
-                <th>
-                    ID Tenant :
-                </th>
-                <th>
-                    {{ $pendapatan->IDtenant }}
+                    {{ $penjualan->IDTrans }}
                 </th>
             </tr>
             <tr>
                 <th>
-                    total pendapatan :
+                    IDproduk :
                 </th>
                 <th>
-                    {{ $pendapatan->totalPendapatan }}
+                    {{ $penjualan->IDproduk }}
                 </th>
             </tr>
             <tr>
                 <th>
-                    setoran Tenant :
+                    Harga Jual :
                 </th>
                 <th>
-                    {{ $pendapatan->IDpendapatan }}
+                    {{ $penjualan->hargajual }}
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Qty :
+                </th>
+                <th>
+                    {{ $penjualan->qty }}
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Dibayar :
+                </th>
+                <th>
+                    {{ $penjualan->dibayar }}
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Kembali :
+                </th>
+                <th>
+                    {{ $penjualan->kembali }}
                 </th>
             </tr>
             <tr>
@@ -75,7 +91,7 @@
                     Tanggal :
                 </th>
                 <th>
-                    {{ $pendapatan->tanggal }}
+                    {{ $penjualan->tanggal }}
                 </th>
             </tr>
         </tbody>

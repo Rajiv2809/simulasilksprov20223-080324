@@ -7,15 +7,19 @@ use App\Models\PendapatanTenant;
 use App\Traits\ResponseHttpStatus;
 use App\Http\Requests\PendapatanRequest;
 use App\Http\Requests\UpdatePendatapatanRequest;
-
+use App\Models\Penjualan;
+use PDF;
 class PendapatanTenantController extends Controller
 {
     use ResponseHttpStatus;
     public function addData(PendapatanRequest $request){
         $data = $request->all();
         $data['setoranTenant'] = $request->totalPendapatan   * (15/100);
-        PendapatanTenant::create($data);
-        return $this->createSuccess();
+        $pendapatan = PendapatanTenant::create($data);
+        return $this->createSuccess([
+            'message' => 'create success',
+            'id' => $pendapatan->IDpendapatan
+        ]);
     }
     public function allData(){
         $data = PendapatanTenant::all();
@@ -47,4 +51,14 @@ class PendapatanTenantController extends Controller
         $data->delete();
         return $this->deleteSuccess();
     }
+    public function kwitansi($id){
+        $pendapatan = PendapatanTenant::find($id);
+        if (!$pendapatan) {
+            return $this->notFound();
+        }
+        $pdf = PDF::loadview('Kwitansi',['pendapatan'=>$pendapatan]);
+        return $pdf->download('kwtansi.pdf');
+
+    }
+    
 }

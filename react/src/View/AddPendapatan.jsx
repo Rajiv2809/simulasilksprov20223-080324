@@ -51,7 +51,25 @@ export default function AddPendapatan() {
                     totalPendapatan,
                     tanggal
                 }).then(({data}) => {
-                    showToast(data.message)
+                    showToast(data.message);
+                    axiosClient.get(`/v1/kwitansi/${data.id}`, { responseType: "blob" })
+                    .then((response) => {
+                      
+                      const blob = new Blob([response.data], { type: "application/pdf" });
+                  
+                      
+                      const link = document.createElement("a");
+                      link.href = window.URL.createObjectURL(blob);
+                      link.download = "kwitansi.pdf";
+                  
+                      
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
+                    })
+                    .catch((error) => {
+                      console.error("Error fetching PDF:", error);
+                    });  
                     navigate('/dashboard/pendapatan')
                 }).catch((err) => {
                     showToast(err.response.data.message, 'red')
