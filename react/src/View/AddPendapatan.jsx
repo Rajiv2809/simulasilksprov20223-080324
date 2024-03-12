@@ -69,7 +69,7 @@ export default function AddPendapatan() {
             <select className='border-2 border-stone-400 p-1 ' value={IDtenant} onInput={e => setIDtenant(e.target.value)}  name="nama" id="">
               <option value="">Select Tenant </option>
               {!loading && tenants.length > 0 && tenants.map(Tenant => (
-                <option  key={Tenant.IDtenant} value={Tenant.IDtenant} >{Tenant.IDtenant} </option>
+                <option  key={Tenant.IDtenant} value={Tenant.IDtenant} >{Tenant.namaTenant} </option>
               ))
 
               }

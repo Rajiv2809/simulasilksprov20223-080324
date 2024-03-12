@@ -13,6 +13,9 @@ import AddTenant from "./View/AddTenant";
 import Tenant from "./components/Tenant";
 import AddPendapatan from "./View/AddPendapatan";
 import Pendapatan from "./components/Pendapatan";
+import DetailPendapatan from "./View/DetailPendapatan";
+import DetailPenjualan from "./View/DetailPenjualan";
+import DetailTenant from "./View/DetailTenant";
 const router = createBrowserRouter([
     {
         path:'/',
@@ -88,6 +91,22 @@ const router = createBrowserRouter([
                         path: 'pendapatan/edit/:id',
                         element: <AddPendapatan/>
                     },
+                    {
+                        path: 'stok/detail/:id',
+                        element: <DetailStok/>
+                    },
+                    {
+                        path: 'pendapatan/detail/:id',
+                        element : <DetailPendapatan/>
+                    },
+                    {
+                        path: 'penjualan/detail/:id',
+                        element: <DetailPenjualan/>
+                    },
+                    {
+                        path: 'tenant/detail/:id',
+                        element: <DetailTenant/>
+                    }
                     
                     
                 ]
